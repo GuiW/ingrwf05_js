@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Formulaire hidden</title>
+  <link rel="stylesheet" href="css/style02.css">
+</head>
+<body>
+  <section>
+
+    <a href="#" id="loginBtn">Login</a>
+    
+    <form action="" class="hidden">
+      <a href="#" id="closeBtn">X</a>
+      <input type="text" placeholder="Login" id="login">
+      <input type="password" placeholder="Password" id="pass">
+      <button>Se connecter</button>
+    </form>
+
+  </section>
+
+  <script>
+  /*
+    var myLoginBtn = document.querySelector("#loginBtn");
+    var myForm = document.querySelector("form");
+    var myCloseBtn = document.querySelector("#closeBtn");
+
+    myLoginBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      this.classList.add('hidden');
+      myForm.classList.remove('hidden');
+    });
+
+    myCloseBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      myForm.classList.add('hidden');
+      myLoginBtn.classList.remove('hidden');
+    });
+  */
+
+    // ***************** //
+    // VERSION OPTIMISEE //
+    // ***************** //
+
+    var myLogLinks = document.querySelectorAll('#loginBtn, #closeBtn');
+    var myForm = document.querySelector("form");
+
+    for (var i = 0; i < myLogLinks.length; i++) {
+      myLogLinks[i].addEventListener('click', function(e) {
+        change(e);
+      });
+    };    
+
+    function change(e) {
+      e.preventDefault();
+      myLogLinks[0].classList.toggle('hidden');
+      myForm.classList.toggle('hidden');
+    }
+
+  </script>
+</body>
+</html>

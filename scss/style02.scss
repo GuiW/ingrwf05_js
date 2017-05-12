@@ -1,0 +1,78 @@
+$bcgColor : #303030;
+$bcgFormColor : #505050;
+$btnHoverColor : #36db83;
+
+* {
+  box-sizing : border-box;
+}
+
+body {
+  background-color : $bcgColor;
+  max-width : 800px;
+  margin : 0 auto;
+  font-family : arial;
+}
+
+section {
+  text-align : center;
+  padding : 50px;
+}
+
+a{
+  text-decoration : none;
+}
+
+// BIG LOGIN BUTTON
+
+#loginBtn {
+  color : white;
+  font-size : 2rem;
+}
+
+#loginBtn:hover {
+  color : $btnHoverColor;
+}
+
+// FORMULAIRE
+
+form {
+  box-sizing : border-box;
+  position : relative;
+  background-color : $bcgFormColor;
+  padding : 40px 20px 20px 20px;
+  margin-top : 10px;
+
+  input{
+    display : block;
+    border : none;
+    margin: 0 auto 10px auto;
+    width : 80%;
+    line-height: 20px;
+    padding-left : 10px;
+    border-radius : 5px;
+  }
+}
+
+// CLOSE BUTTON
+
+#closeBtn {
+  position : absolute;
+  top : 10px;
+  right : 20px;
+  display : inline-block;
+  width : 32px;
+  line-height : 30px;
+  font-size : 1.2rem;
+  color : white;
+  border : 1px solid white;
+  border-radius : 50%;
+}
+
+
+//HIDDEN CLASS
+
+.hidden {
+  visibility : hidden;
+}
+
+

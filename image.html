@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<title>Image</title>
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<div id="mainFlex">
+		<section id="sidebar">
+			<img src="img/01.png" alt="Mon premier placeholder">
+			<img src="img/02.png" alt="Mon deuxième placeholder">
+			<img src="img/03.png" alt="Mon troisième placeholder">
+		</section>
+
+		<main>
+			<figure>
+				<img src="" alt="">
+				<figcaption></figcaption>
+			</figure>
+		</main>
+	</div>
+
+	<script>
+		//Récupérer un array de mes vignettes
+		var myVignette = document.querySelectorAll('section img');
+		//Récupérer ma grande image
+		var myLargeImg = document.querySelector('main img');
+		//Récupérer mon figcaption
+		var myFigcaption = document.querySelector('figcaption');
+
+		// **************
+
+		//Ma vignette de départ choisie de façon random
+		var myStartVignette = myVignette[randomNumber(0, 2)];
+
+		//Fonction pour obtenir un nombre random entre mon min et mon max
+		function randomNumber(min, max) {
+			min = Math.ceil(min);
+			max = Math.floor(max);
+			return Math.floor(Math.random() * (max - min +1)) + min;
+		}
+
+		//Appliquer la source de la vignette à la grande image
+		myLargeImg.src = myStartVignette.src;
+		//Faire apparaître la valeur du alt de la vignette de départ dans le figcaption
+		myFigcaption.innerHTML = myStartVignette.alt;
+		//Ajouter la class fade à la vignette de départ
+		myStartVignette.classList.add("fade");
+
+		// **************
+
+		//Parcourir le tableau de mes vignettes
+		for (var i = 0; i < myVignette.length; i++) {
+			//Ajouter un écouteur sur chaque vignette
+			myVignette[i].addEventListener('click', function() {
+				console.log('test');
+
+
+				//Récupérer l'attribut src de la vignette
+				myVignetteSrc = this.src;
+				//Appliquer la source de la vignette à la grande image
+				myLargeImg.src = myVignetteSrc;
+
+
+				//Récupérer l'attribut alt de la vignette
+				myVignetteAlt = this.alt;
+				//Faire apparaître la valeur du alt de la vignette dans le figcaption
+				myFigcaption.innerHTML = myVignetteAlt;
+
+
+				//Retirer la class "fade" à toutes les vignettes
+				for (var j = 0; j < myVignette.length; j++) {
+					myVignette[j].classList.remove("fade");
+				}
+				//Ajouter la class "fade" à l'élément cliqué
+				this.classList.add("fade");
+
+			});
+		}
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>List</title>
+</head>
+<body>
+
+  <form action="">
+    <input type="text">
+    <button id="add">Ajouter</button>
+    <button id="reset">Réinitialiser</button>
+  </form>
+
+  <ul></ul>
+
+  <script>
+    // Functions
+    var AddItem = function() {
+
+      myInputVal = myInput.value;
+
+      if (myInputVal != "") {
+        myList.innerHTML += "<li>" + myInputVal + "</li>";
+      }
+      else {
+        alert("Vous n'avez rien entré dans le champ.");
+      }
+    }
+
+    var FocusInput = function() {
+      myInput.value = "";
+      myInput.focus();
+    }
+
+    var ResetList = function() {
+      myList.innerHTML = "";
+    }
+
+    // Selecteurs
+    var myInput = document.querySelector("input");
+    var myAddBtn = document.querySelector("#add");
+    var myResetBtn = document.querySelector("#reset");
+    var myList = document.querySelector("ul");
+
+    // Events
+    myAddBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      AddItem();
+      FocusInput();
+    });
+
+    myResetBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      ResetList();
+    });
+  </script>
+</body>
+</html>

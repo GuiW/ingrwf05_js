@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<title>color</title>
+
+	<style>
+		div {
+			width : 50px;
+			height : 50px;
+			margin : 20px;
+			display : inline-block;
+		}
+
+		.red {
+			background : red;
+		}
+
+		.green {
+			background : green;
+		}
+
+		.blue {
+			background : blue;
+		}
+	</style>
+
+</head>
+<body>
+	<div class="red"></div>
+	<div class="green"></div>
+	<div class="blue"></div>
+
+	<h1>Mon Texte</h1>
+
+	<script>
+
+		var text = document.querySelector("h1");
+
+		/*
+		Version Longue :
+
+		var myDivRed = document.querySelector(".red");
+		var myDivGreen = document.querySelector(".green");
+		var myDivBlue = document.querySelector(".blue");
+
+		myDivRed.addEventListener('click', function() {
+		 	text.style.color = "red";
+		});
+
+		myDivGreen.addEventListener('click', function() {
+			text.style.color = "green";
+		});
+
+		myDivBlue.addEventListener('click', function() {
+			text.style.color = "blue";
+		});
+		*/
+
+		var myDiv = document.querySelectorAll("div");
+
+		for (var i = 0; i < myDiv.length; i++) {
+			myDiv[i].addEventListener('click', function(){
+			 	myColor = this.getAttribute("class");
+			 	document.querySelector("h1").style.color = myColor;
+			});
+		}
+
+	</script>
+
+</body>
+</html>

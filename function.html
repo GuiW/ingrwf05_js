@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>functions</title>
+  <style>
+    #hover {
+      display : inline-block;
+    }
+  </style>
+</head>
+<body>
+  <h1>Titre par défaut</h1>
+
+  <p>Lundi</p>
+  <p>Mardi</p>
+  <div id="hover">
+    Passez la souris !
+  </div>
+
+  <script>
+    // Functions
+    function Main(text) {
+      document.querySelector('h1').innerHTML = text;
+    }
+
+    // Sélecteurs
+    var myBody = document.querySelector('body');
+    var myP = document.querySelector('p');
+    var myHoverDiv = document.querySelector('#hover')
+
+    // Events
+    myBody.onload = Main("Youpee");
+
+    myP.onclick = function () {
+      Main(this.innerHTML);
+    }
+
+    myHoverDiv.onmouseover = function () {
+      Main("La souris est passée !");
+    }
+
+    myHoverDiv.onmouseout = function () {
+      Main("Youpee");
+    }
+
+
+  </script>
+
+</body>
+</html>

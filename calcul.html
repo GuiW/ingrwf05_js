@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<title>Calcul</title>
+</head>
+<body>
+	<form action="">
+		<input type="number" id="number01">
+		<input type="number" id="number02">
+		<button>Addition</button>
+	</form>
+
+	<output></output>
+
+	<script>
+		var myAdditionBtn = document.querySelector('button');
+
+		myAdditionBtn.onclick = function(e) {
+			e.preventDefault();
+
+			myNumber01 = document.querySelector('#number01');
+			myNumber02 = document.querySelector('#number02');
+			myAddition = parseInt(myNumber01.value) + parseInt(myNumber02.value);
+			myOutput = document.querySelector('output');
+
+			myOutput.innerHTML = myAddition;
+			myOutput.style.color = 'red';
+		};
+	</script>
+</body>
+</html>

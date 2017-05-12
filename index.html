@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<title>Javascript pour les nuls</title>
+</head>
+<body>
+	<h1>Test</h1>
+	<section>Default text</section>
+
+	<script>
+	/* Commentaire sur
+	deux lignes */
+		var name = 'Wilmotte'; //string
+		var firstname = 'Guillaume'; //string
+		var age = 24; //number
+		var inscription = true; //booléen
+		var resultat = 50.56; //decimal
+		console.log(name + ' ' + firstname);
+		console.log(age + resultat);
+		var surnames = firstname + ' item1 item2 item3';
+		console.log(surnames);
+
+		var mySection = document.querySelector('section');
+		console.log(mySection);
+		console.log(mySection.innerHTML);
+		mySection.innerHTML = surnames;
+	</script>
+</body>
+</html>

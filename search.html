@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<title>Search</title>
+</head>
+<body>
+	<header>
+		<form action="">
+			<input type="text" id="search">
+			<button>Search</button>
+		</form>
+	</header>
+
+  <footer>
+    <a href="http://google.be">Google</a>
+  </footer>
+
+	<section></section>
+
+	<script>
+		//Récupérer le bouton
+		var mySearchBtn = document.querySelector('button');
+
+		mySearchBtn.onclick = function(e) {
+			//Désactiver le comportement par défaut du bouton du formulaire
+			e.preventDefault();
+
+			//Récupérer le champ search
+			mySearch = document.querySelector('#search');
+			//Récupérer la valeur du champ search
+			text = mySearch.value;
+			//Récupérer la section
+			mySection = document.querySelector('section');
+
+			//Afficher la valeur du champ search dans la section
+			mySection.innerHTML = text;
+		};
+
+    var myLink = document.querySelector('footer a');
+
+    myLink.onclick = function(e) {
+      e.preventDefault();
+    };
+	</script>
+</body>
+</html>

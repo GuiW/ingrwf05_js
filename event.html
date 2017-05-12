@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>event</title>
+</head>
+<body>
+	<button class="test">Go</button>
+	<script>
+		var myBtn = document.querySelector("button");
+		//écouteur d'événement
+		myBtn.addEventListener('click', function(e) {
+			e.preventDefault();
+			console.log("ok");
+		});
+
+		myBtn.removeEventListener('click', function(){});
+	</script>
+</body>
+</html>

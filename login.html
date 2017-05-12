@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<title>login</title>
+	<style>
+		section {
+			display : none;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<form action="" id="login">
+			<input placeholder="Login" type="text" id="pseudo">
+			<button>Go</button>
+		</form>
+		<section>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium cupiditate veritatis animi voluptatem, necessitatibus vero officiis quos ipsam a aspernatur!</section>
+	</header>
+
+	<script>
+		var myLoginBtn = document.querySelector('button');
+
+		myLoginBtn.onclick = function(e) {
+			e.preventDefault();
+
+			myLogin = document.querySelector('#pseudo').value;
+			console.log(myLogin);
+
+			//premiere condition
+			if (myLogin == 'admin') {
+				document.querySelector('section').style.display = 'block';
+			}
+
+			//si la premiere condition n'est pas remplie
+			else if (myLogin == ''){
+				alert('Tapez votre pseudo');
+			}
+
+			//si aucune condition n'est remplie
+			else {
+				alert('pas ok');
+			}
+		};
+	</script>
+</body>
+</html>

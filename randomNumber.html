@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Random number</title>
+  <style>
+    .fail {
+      color : red;
+    }
+
+    .win {
+      color : green;
+    }
+  </style>
+</head>
+<body>
+  <h1>Random Number</h1>
+  <p>Inscrivez un nombre entre <strong>1</strong> et <strong>20</strong>.</p>
+  <form action="">
+    <input type="number" placeholder="Votre nombre"><br>
+    <button>Je tente ma chance !</button>
+  </form>
+  <h2>Votre résultat :</h2>
+  <div id="historic"></div>
+  <output></output>
+
+  <script>
+    // Selecteurs
+    var myInput = document.querySelector("input");
+    var myBtn = document.querySelector("button");
+    var myOutput = document.querySelector("output");
+    var random = Math.floor(Math.random()*20);
+
+    // Fonctions
+    var Game = function(val) {
+      switch (true){
+        case val > random :
+          Display("Trop grand...", "fail");
+          Historic(val);
+          break;
+
+        case val < random :
+          Display("Trop petit...", "fail");
+          Historic(val);
+          break;
+
+        default :
+          Display("Vous avez gagné!", "win");
+          Historic(val);
+      }
+    }
+
+    var Display = function(text, result) {
+      myOutput.innerHTML = "<span class=" + result + ">" + text + "</span>"
+    }
+
+    var Historic = function(val) {
+      myHistoric = document.querySelector("#historic")
+      myHistoric.innerHTML += val + " ";
+    }
+
+    // Events
+    myBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      myInputVal = parseInt(myInput.value);
+      Game(myInputVal);
+    });
+
+    var myVar = document.querySelector("");
+
+  </script>
+</body>
+</html>

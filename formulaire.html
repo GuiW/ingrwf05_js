@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<title>Formulaire 1</title>
+	<style>
+
+		label {
+			display : inline-block;
+			width : 80px;
+			text-align : right;
+		}
+
+	</style>
+</head>
+<body>
+	<form action="">
+		<label for="nom">Nom :</label>
+		<input type="text" id="nom"><br>
+		<label for="prenom">Prénom :</label>
+		<input type="text" id="prenom"><br>
+		<label for="email">E-mail :</label>
+		<input type="email" id="email"><br>
+		<button>Go</button>
+	</form>
+
+	<output></output>
+
+	<script>
+		var myButton = document.querySelector('button');
+		var output = document.querySelector('output')
+
+		myButton.onclick = function(event) {
+			event.preventDefault();
+			//alert('test');
+
+			var myNom = document.querySelector('#nom');
+			var myPrenom = document.querySelector('#prenom');
+			var myEmail = document.querySelector('#email');
+
+			output.innerHTML = '<strong>Votre nom : </strong>' + myNom.value + '<br><strong>Votre prénom : </strong>' + myPrenom.value + '<br><strong>Votre adresse E-mail : </strong>' + myEmail.value;
+		};	
+	</script>
+
+</body>
+</html>

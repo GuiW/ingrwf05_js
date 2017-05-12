@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Personnel</title>
+
+  <style>
+
+    body {
+      font-family : arial;
+    }
+
+    main {
+      display : flex;
+    }
+
+    aside {
+      width : 18%;
+      margin-right : 20px;
+      background-color : #505050;
+      color : white;
+    }
+
+    dl {
+      background-color : #7f7f7f;
+      padding : 20px;
+      color : #f2f2f2;
+    }
+
+    dd {
+      color : #dddddd;
+    }
+
+    #inscrit {
+      color : green;
+      background-color : white;
+      text-align : center;
+      margin : 0;
+    }
+
+    #inscrit.bad {
+      color : red;
+    }
+
+    form {
+      background-color : #c4c4c4;
+      display : inline-block;
+      padding : 20px;
+      color: dimgrey;
+    }
+
+    input {
+      margin-bottom : 5px;
+      border : none;
+      border-radius : 3px;
+      line-height : 20px;
+      padding-left : 10px;
+    }
+
+  </style>
+
+</head>
+<body>
+
+  <main>
+    <aside>
+      <ul></ul>
+    </aside>
+    <section>
+      <h1>Nom et prénom</h1>
+      <dl>
+        <dt>Téléphone</dt>
+        <dd id="tel">Mon tel<dd>
+        <dt>e-mail</dt>
+        <dd id="mail">Mon mail</dd>
+        <dt>Age</dt>
+        <dd id="age">Mon âge</dd>
+        <dt>Inscription</dt>
+        <dd id="inscrit"></dd>
+      </dl>
+    </section>
+  </main>
+
+  <!-- Formulaire d'inscription -->
+    <h2>Inscrivez-vous</h2>
+    <form action="">
+      <input type="text" name="nom" placeholder="Votre nom"><br>
+      <input type="text" name="prenom" placeholder="Votre prénom"><br>
+      <input type="tel" name="tel" placeholder="Votre tel"><br>
+      <input type="email" name="mail" placeholder="Votre email"><br>
+      <input type="number" name="age" placeholder="Votre âge" value><br>
+
+      <label>
+        Inscription
+        <input type="checkbox" name="formation">
+      </label><br>
+
+      <button>Ajouter</button>
+    </form>
+
+  <script>
+    // DATA
+    myPersonnel = new Array();
+    myPersonnel.push({
+      "nom"         : "Wilmotte",
+      "prenom"      : "Guillaume",
+      "telephonne"  : "0473/21.32.30",
+      "email"       : "g.w@gmail.be",
+      "age"         : "24",
+      "formation"   : true
+    });
+    myPersonnel.push({
+      "nom"         : "Machin",
+      "prenom"      : "Truc",
+      "telephonne"  : "666",
+      "email"       : "new@test.be",
+      "age"         : "100",
+      "formation"   : false
+    });
+    console.log(myPersonnel);
+
+    // SELECTEURS
+    var myList = document.querySelector("ul");
+    var myName = document.querySelector("h1");
+    var myTel = document.querySelector("#tel");
+    var myMail = document.querySelector("#mail");
+    var myAge = document.querySelector("#age");
+    var myInscrit = document.querySelector("#inscrit");
+
+    var myAllField = document.querySelectorAll("form input");
+    var myNomField = document.querySelector("[name=nom]");
+    var myPrenomField = document.querySelector("[name=prenom]");
+    var myTelField = document.querySelector("[name=tel]");
+    var myMailField = document.querySelector("[name=mail]");
+    var myAgeField = document.querySelector("[name=age]");
+    var myFormationBox = document.querySelector("[name=formation]");
+    var myFormBtn = document.querySelector("form button");
+
+    // FUNCTIONS
+    // Reset du formulaire
+    var Reset = function() {
+      for (var i = 0; i < myAllField.length; i++) {
+        myAllField[i].value= '';
+        myFormationBox.checked = false;
+        myNomField.focus();
+      }
+    }
+
+    // Affichage des données de la premiere personne
+    var AffData = function(id) {
+      myName.innerHTML = myPersonnel[id].nom + ' ' + myPersonnel[id].prenom;
+      myTel.innerHTML = myPersonnel[id].telephonne;
+      myMail.innerHTML = myPersonnel[id].email;
+      myAge.innerHTML = myPersonnel[id].age;
+
+      if (myPersonnel[id].formation == true) {
+        myInscrit.innerHTML = "Inscrit";
+        myInscrit.classList.remove("bad");
+      }
+      else {
+        myInscrit.innerHTML = "Pas inscrit";
+        myInscrit.classList.add("bad");
+      }
+    }
+
+    // Création de la liste de noms
+    var CreateList = function() {
+      // Vider la list
+      myList.innerHTML = "";
+      // Bouclage des personnes et affichage dans le aside au chargement de la page
+      for (var i = 0; i < myPersonnel.length; i++) {
+        myList.innerHTML += '<li data-id="' + i +'">' + myPersonnel[i].nom + ' ' + myPersonnel[i].prenom + '</li>';
+      }
+
+      // Sélecteur des li du aside
+      myListing = document.querySelectorAll("aside li");
+
+      // Assigner un click aux li de la list
+      for (var i = 0; i < myListing.length; i++) {
+        myListing[i].addEventListener('click', function() {
+          myId = this.getAttribute("data-id");
+          AffData(myId);
+        });
+      }
+    }
+
+    // On appelle une première fois les fonctions au chargement de la page
+    AffData(0);
+    CreateList();
+
+    // EVENTS
+    // Soumission du formulaire et ajout d'une personne dans mon tableau
+    myFormBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+
+      if (myFormationBox.checked == true) {
+        inscription = true
+      }
+      else {
+        inscription = false
+      }
+
+      newPersonne = {
+        "nom"         : myNomField.value,
+        "prenom"      : myPrenomField.value,
+        "telephonne"  : myTelField.value,
+        "email"       : myMailField.value,
+        "age"         : myAgeField.value,
+        "formation"   : inscription
+      }
+      myPersonnel.push(newPersonne);
+      console.log(myPersonnel)
+      CreateList();
+      Reset();
+    });
+
+  </script>
+</body>
+</html>
